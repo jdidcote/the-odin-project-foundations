@@ -1,6 +1,4 @@
-function randomInteger(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+const TOTAL_GAMES = 5;
 
 const choices = {
   0: "rock",
@@ -8,8 +6,26 @@ const choices = {
   2: "scissors",
 };
 
+var gameScore = {
+  computer: 0,
+  player: 0,
+  gameStatus: 1,
+};
+
+function randomInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 function computerPlay() {
   return choices[randomInteger(0, 2)];
+}
+
+function updateGameScore(result) {
+  if (result == "win") {
+    gameScore["player"] += 1;
+  } else if (result == "lose") {
+    gameScore["computer"] += 1;
+  }
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -25,34 +41,45 @@ function playRound(playerSelection, computerSelection) {
   } else if (playerSelection == "paper") {
     gameResult = computerSelection == "scissors" ? "lose" : "win";
   }
+
   return gameResult;
 }
 
-function getUserInput() {
-  // Get the user input, error check and map to a correct choice
-  const promptText = "Enter choice: \n 0: rock \n 1: paper \n 2: scissors";
+function checkGameStatus(resultText, gameResult) {
+  const gameOverText = "Game over, you ";
 
-  while (true) {
-    const userInput = prompt(promptText);
-    if (Object.keys(choices).includes(String(userInput))) {
-      return choices[userInput];
-    } else {
-      alert("Invalid selection");
-    }
+  if (gameScore["computer"] >= TOTAL_GAMES) {
+    resultText.innerHTML = gameOverText + "lose!";
+    gameScore["gameStatus"] = 0;
+  } else if (gameScore["player"] >= TOTAL_GAMES) {
+    resultText.innerHTML = gameOverText + "win!";
+    gameScore["gameStatus"] = 0;
+  } else {
+    resultText.innerHTML = "Round result: " + gameResult;
   }
 }
 
-function game(n_games) {
-  // Play a number of games
-  let computerScore = 0;
-  let playerScore = 0;
+function updateRoundResult(gameResult) {
+  const resultText = document.querySelector(".round-result-text");
+  checkGameStatus(resultText, gameResult);
+}
 
-  for (let i = 0; i < n_games; i++) {
-    let computerSelection = computerPlay();
-    let playerSelection = getUserInput();
-    let gameResult = playRound(playerSelection, computerSelection);
-    console.log(gameResult);
+function disableButtonsIfDone(button) {
+  if (gameScore["gameStatus"] == 0) {
+    button.disabled = "disabled";
   }
 }
 
-game(1);
+function handleGame(button) {
+  let gameResult = playRound(button.id, computerPlay());
+  updateRoundResult(gameResult);
+  updateGameScore(gameResult);
+}
+
+const userInput = document.querySelectorAll(".input-button");
+userInput.forEach((button) => {
+  disableButtonsIfDone(button);
+  button.addEventListener("click", () => {
+    handleGame(button);
+  });
+});

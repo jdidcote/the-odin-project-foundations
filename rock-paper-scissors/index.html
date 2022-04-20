@@ -2,10 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <script src="app.js"></script>
+    <script src="app.js" defer></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <div class="game-area">
+        <div class="buttons">
+          <button class="input-button" id="rock">Rock</button>
+          <button class="input-button" id="paper">Paper</button>
+          <button class="input-button" id="scissors">Scissors</button>
+        </div>
+        <div class="results-area">
+          <div class="round-result-text">Round result:</div>
+          <div>Computer score: 0</div>
+          <div>Player Score: 0</div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
