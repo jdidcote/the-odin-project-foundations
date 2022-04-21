@@ -12,20 +12,21 @@
     <div class="container">
       <div class="inputs">
         <div class="input-element">
-          <p>Number of grids:</p>
+          <p>Number of grids: <br />(requires reset)</p>
           <select name="no-grids" class="num-grids">
+            <option value="4">4</option>
             <option value="8">8</option>
-            <option value="16" selected>16</option>
-            <option value="32">32</option>
+            <option value="16">16</option>
+            <option value="32" selected>32</option>
             <option value="64">64</option>
-            <option value="128">128</option>
           </select>
         </div>
         <div class="input-element">
           <button class="reset-button">Reset</button>
         </div>
         <div class="input-element">
-          Random colors<input type="checkbox" class="random-colors" />
+          <p>Random colors</p>
+          <input type="checkbox" class="random-colors" />
         </div>
       </div>
       <div class="draw-area"></div>

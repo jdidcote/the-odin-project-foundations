@@ -1,6 +1,7 @@
 body {
   padding: 0;
   border: 0;
+  background-color: rgba(128, 128, 128, 0.435);
 }
 
 .container {
@@ -11,12 +12,13 @@ body {
   width: 80%;
   min-width: 500px;
   aspect-ratio: 1;
-  border: 1px solid red;
   margin: auto;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  background-color: antiquewhite;
+  border: 5px solid black;
 }
 
 .inputs {
@@ -25,7 +27,9 @@ body {
   width: 80%;
   height: 10%;
   margin: auto;
-  border: 1px solid blue;
+  border: 3px solid black;
+  border-radius: 10px;
+  background-color: rgba(124, 124, 124, 0.124);
 }
 
 .input-element {
@@ -40,8 +44,12 @@ body {
   min-width: 100px;
 }
 
+.input-element select {
+  height: 25px;
+  margin: auto 10px;
+}
+
 .input-element input {
-  border: 1px solid red;
   margin: auto 10px;
 }
 
@@ -57,10 +65,13 @@ body {
   height: 50%;
   aspect-ratio: 1;
   margin: auto;
+  background-color: white;
+  border: 3px solid black;
 }
 
 .grid-div {
   border: 1px solid black;
   display: flex;
+  aspect-ratio: 1;
   justify-content: center;
 }
