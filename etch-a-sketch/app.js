@@ -22,6 +22,10 @@ function resetAllDivColors(divs) {
 }
 
 function changeDivColor(div) {
+  if (div.style.backgroundColor != "") {
+    return;
+  }
+
   const randomColorInput = document.querySelector(".random-colors");
 
   if (randomColorInput.checked) {
