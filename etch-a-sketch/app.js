@@ -22,7 +22,14 @@ function resetAllDivColors(divs) {
 }
 
 function changeDivColor(div) {
-  div.style.backgroundColor = "black";
+  const randomColorInput = document.querySelector(".random-colors");
+
+  if (randomColorInput.checked) {
+    const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    div.style.backgroundColor = "#" + randomColor;
+  } else {
+    div.style.backgroundColor = "black";
+  }
 }
 
 function handleGridColors() {
