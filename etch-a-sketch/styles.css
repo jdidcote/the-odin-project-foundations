@@ -20,8 +20,16 @@ body {
 }
 
 .inputs {
+  display: flex;
+  justify-content: center;
   width: 80%;
   height: 10%;
+  margin: auto;
+  border: 1px solid blue;
+}
+
+.reset-button {
+  height: 50%;
   margin: auto;
 }
 
