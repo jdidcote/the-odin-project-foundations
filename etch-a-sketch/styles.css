@@ -5,12 +5,11 @@ body {
 }
 
 .container {
-  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 80%;
-  min-width: 500px;
+  width: 50vw;
+  min-width: 700px;
   aspect-ratio: 1;
   margin: auto;
   top: 0;
