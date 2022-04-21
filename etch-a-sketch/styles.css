@@ -22,7 +22,7 @@ body {
 .inputs {
   display: flex;
   justify-content: center;
-  width: 50%;
+  width: 80%;
   height: 10%;
   margin: auto;
   border: 1px solid blue;
@@ -30,7 +30,13 @@ body {
 
 .input-element {
   display: flex;
+  flex-direction: row;
   height: 50%;
+  margin: auto;
+  text-align: center;
+}
+
+.input-element p {
   margin: auto;
 }
 
