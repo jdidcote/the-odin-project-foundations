@@ -36,6 +36,15 @@ body {
   text-align: center;
 }
 
+.input-element button {
+  min-width: 100px;
+}
+
+.input-element input {
+  border: 1px solid red;
+  margin: auto 10px;
+}
+
 .input-element p {
   margin: auto;
 }
