@@ -50,12 +50,37 @@
   text-align: center;
   border: 2px solid black;
   border-radius: 7px;
-  width: 20%;
-  aspect-ratio: 1.3;
   font-size: 1.5rem;
+}
+
+.button-row .calc-button {
+  width: 23%;
+  aspect-ratio: 1.2;
   background-color: azure;
+  font-weight: 800;
+}
+
+.button-row .big-button {
+  width: 47%;
+  height: 90%;
 }
 
 .button-row span {
   margin: auto;
+}
+
+.button-row .operation-button {
+  background-color: rgba(255, 166, 0, 0.69);
+}
+
+.button-row .equals-button {
+  background-color: skyblue;
+}
+
+button:hover {
+  background-color: rgba(128, 128, 128, 0.49) !important;
+}
+
+button:active {
+  background-color: rgba(255, 0, 0, 0.37) !important;
 }
