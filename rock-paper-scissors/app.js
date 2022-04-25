@@ -64,6 +64,14 @@ function updateRoundResult(gameResult) {
   checkGameStatus(resultText, gameResult);
 }
 
+function updateScoreText() {
+  const playerScoreText = document.querySelector(".player-score");
+  const computerScoreText = document.querySelector(".computer-score");
+
+  playerScoreText.innerHTML = "Player Score: " + gameScore["player"];
+  computerScoreText.innerHTML = "Computer Score: " + gameScore["computer"];
+}
+
 function disableButtonsIfDone(button) {
   if (gameScore["gameStatus"] == 0) {
     button.disabled = "disabled";
@@ -72,6 +80,7 @@ function disableButtonsIfDone(button) {
 
 function handleGame(button) {
   let gameResult = playRound(button.id, computerPlay());
+  updateScoreText();
   updateRoundResult(gameResult);
   updateGameScore(gameResult);
 }
