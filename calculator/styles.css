@@ -19,20 +19,37 @@
   background-color: blanchedalmond;
 }
 
+/* Screen */
 .screen-area {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border: 3px solid black;
   border-radius: 7px;
   width: 80%;
-  height: 20%;
-  margin: 10% auto;
+  margin: 20px auto 10px auto;
   background-color: azure;
+  font-size: 1.5rem;
 }
+
+.number-area {
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+.result-area {
+  text-align: right;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+/* Buttons */
 
 .button-area {
   display: flex;
   flex-direction: column;
-  flex: 4;
+  flex: 3;
   width: 80%;
   margin: 0 auto 5% auto;
 }
@@ -56,12 +73,12 @@
 .button-row .calc-button {
   width: 23%;
   aspect-ratio: 1.2;
-  background-color: azure;
   font-weight: 800;
+  background-color: azure;
 }
 
 .button-row .big-button {
-  width: 47%;
+  width: 49%;
   height: 90%;
 }
 
@@ -70,10 +87,16 @@
 }
 
 .button-row .operation-button {
+  width: 23%;
+  aspect-ratio: 1.2;
+  font-weight: 800;
   background-color: rgba(255, 166, 0, 0.69);
 }
 
 .button-row .equals-button {
+  width: 23%;
+  aspect-ratio: 1.2;
+  font-weight: 800;
   background-color: skyblue;
 }
 
