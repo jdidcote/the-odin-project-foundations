@@ -1,6 +1,6 @@
 function calculate(a, b, operation) {
-  a = parseInt(a);
-  b = parseInt(b);
+  a = parseFloat(a);
+  b = parseFloat(b);
 
   let calculation;
 
@@ -33,7 +33,7 @@ class Calculation {
     this.resetNumbers();
     this.resetResult();
     this.operators = ["+", "-", "*", "/"];
-    this.numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+    this.numbers = [".", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
   }
 
   resetNumbers() {
@@ -52,6 +52,7 @@ class Calculation {
   }
 
   calculate() {
+    console.log(this.firstNumber);
     const result = calculate(
       this.firstNumber,
       this.secondNumber,
@@ -71,6 +72,22 @@ class Calculation {
     } else if (this.firstNumber != "") {
       this.firstNumber = this.firstNumber.slice(0, -1);
     }
+  }
+
+  checkNumberInputValid(currentVal, newInput) {
+    // Handle logic for 0s and decimal points
+
+    // If first number is 0 and newInput isn't a point
+    if (newInput != "." && currentVal == "0") {
+      return false;
+    }
+
+    // If a decimal point already exists and new input is decimal point
+    if (newInput == "." && currentVal.includes(".")) {
+      return false;
+    }
+
+    return true;
   }
 
   addnewInput(newInput) {
@@ -97,7 +114,8 @@ class Calculation {
     if (
       this.operation == "" &&
       this.numbers.includes(newInput) &&
-      isNaN(this.currentResult)
+      isNaN(this.currentResult) &&
+      this.checkNumberInputValid(this.firstNumber, newInput)
     ) {
       this.firstNumber += newInput;
     }
@@ -112,7 +130,11 @@ class Calculation {
     }
 
     // Second number
-    if (this.operation != "" && this.numbers.includes(newInput)) {
+    if (
+      this.operation != "" &&
+      this.numbers.includes(newInput) &&
+      this.checkNumberInputValid(this.secondNumber, newInput)
+    ) {
       this.secondNumber += newInput;
     }
   }
