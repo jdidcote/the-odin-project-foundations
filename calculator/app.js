@@ -64,18 +64,33 @@ class Calculation {
   }
 
   addnewInput(newInput) {
+    // First check if we should calculate
     if (this.checkShouldCalculate(newInput)) {
       this.calculate();
       return;
     }
 
+    // Check for clear
+    if (newInput == "Clear") {
+      this.resetNumbers();
+      this.resetResult();
+    }
+
     // First number
-    if (this.operation == "" && this.numbers.includes(newInput) && isNaN(this.currentResult)) {
+    if (
+      this.operation == "" &&
+      this.numbers.includes(newInput) &&
+      isNaN(this.currentResult)
+    ) {
       this.firstNumber += newInput;
     }
 
     // Operation
-    if (this.operators.includes(newInput) && this.secondNumber == "" && this.firstNumber != "") {
+    if (
+      this.operators.includes(newInput) &&
+      this.secondNumber == "" &&
+      this.firstNumber != ""
+    ) {
       this.operation = newInput;
     }
 
@@ -92,18 +107,17 @@ class Calculation {
 
 const calculation = new Calculation();
 
-function updateinputArea(newInput, resetCalculation = false) {
-  if (resetCalculation) {
-    const calculation = new Calculation();
-  }
-
+function handleCalculatorInput(newInput) {
   calculation.addnewInput(newInput);
   inputArea.innerHTML = calculation.displayCalculation();
+  if (isNaN(calculation.currentResult)) {
+    resultArea.innerHTML = "";
+  }
 }
 
 const buttons = document.querySelectorAll("button");
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
-    updateinputArea(button.textContent.trim());
+    handleCalculatorInput(button.textContent.trim());
   });
 });
