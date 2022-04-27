@@ -63,6 +63,16 @@ class Calculation {
     updateResultArea(result);
   }
 
+  handleDelete() {
+    if (this.secondNumber != "") {
+      this.secondNumber = this.secondNumber.slice(0, -1);
+    } else if (this.operation != "") {
+      this.operation = "";
+    } else if (this.firstNumber != "") {
+      this.firstNumber = this.firstNumber.slice(0, -1);
+    }
+  }
+
   addnewInput(newInput) {
     // First check if we should calculate
     if (this.checkShouldCalculate(newInput)) {
@@ -74,6 +84,13 @@ class Calculation {
     if (newInput == "Clear") {
       this.resetNumbers();
       this.resetResult();
+      return;
+    }
+
+    // CHeck for delete
+    if (newInput == "Delete") {
+      this.handleDelete();
+      return;
     }
 
     // First number
