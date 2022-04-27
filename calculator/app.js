@@ -43,7 +43,7 @@ class Calculation {
   }
 
   resetResult() {
-    this.currentResult = 0;
+    this.currentResult = NaN;
   }
 
   checkShouldCalculate(newInput) {
@@ -59,6 +59,7 @@ class Calculation {
     );
     this.resetNumbers();
     this.currentResult = result;
+    this.firstNumber = result;
     updateResultArea(result);
   }
 
@@ -69,12 +70,12 @@ class Calculation {
     }
 
     // First number
-    if (this.operation == "" && this.numbers.includes(newInput)) {
+    if (this.operation == "" && this.numbers.includes(newInput) && isNaN(this.currentResult)) {
       this.firstNumber += newInput;
     }
 
     // Operation
-    if (this.operators.includes(newInput) && this.secondNumber == "") {
+    if (this.operators.includes(newInput) && this.secondNumber == "" && this.firstNumber != "") {
       this.operation = newInput;
     }
 
